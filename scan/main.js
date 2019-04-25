@@ -1,8 +1,7 @@
-
 var vowels = ['a', 'e', 'o', 'u'];
-var longVowels = ['ā', 'ē', 'ī','ō'];
+var longVowels = ['ā', 'ē', 'ī','ō', 'ū'];
 var consonants = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'p', 'qu', 'q', 'r', 's', 't', 'v', 'w', 'y', 'z'];
-var diphthongs = ['ae', 'āe', 'aē', 'āē', 'au', 'āu', 'eu', 'ēu', 'oe', 'ōe', 'oē', 'ōē'];
+var diphthongs = ['ae', 'āe', 'aē', 'āē', 'au', 'āu', 'aū', 'āū', 'eu', 'ēu','eū', 'ēū', 'oe', 'ōe', 'oē', 'ōē'];
 
 var output;
 var finalOutput = '';
@@ -19,6 +18,7 @@ function Scan(){
 	var input = document.getElementById("input").value;
 	
 	output = input.toLowerCase();
+    output = output.replace( /[.,?;:'!]/g, '');
 	
 	//remove every 'h'
 	output = output.replace(/h/g, '');
@@ -52,10 +52,17 @@ function Scan(){
 	for (i = 0; i < longVowels.length; i++){
 		output = output.replace(new RegExp(longVowels[i], 'g'), '*');
 	}
+    
+    //fix elisions
+    output = output.replace('/ *', ' *');
+    output = output.replace('* /', ' /');
+    output = output.replace('/ /', ' /');
+    output = output.replace('* *', ' *');
 	
 	//remove spaces
 	output = output.replace(/ /g, '');
 	
+    //prepare final output
 	var outputArray = output.split(/\n/);
 	for (i = 0; i < outputArray.length; i++){
 		WriteOutput(outputArray[i]);
@@ -81,7 +88,7 @@ function WriteOutput(String){
 			else if (String.charAt(i) === '/' && String.charAt(i+1) === '-' && String.charAt(i+2) === '-'){
 				finalOutput += '- ';
 			}
-			//else it is a short syllabe
+			//else it is a short syllable
 			else{
 				finalOutput += 'U ';
 			}
