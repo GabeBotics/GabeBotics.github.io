@@ -2,7 +2,7 @@ var playing = false;
 var score;
 var action;
 var timeremaining;
-var correctAnswer; 
+var correctAnswer;
 //if we click on the start/reset
 if (getCookie("score") == ""){
     document.cookie = "score = 0";
@@ -29,6 +29,7 @@ document.getElementById("scorevalue").innerHTML = score;
                 
             }else{
                 //wrong answer
+                timeremaining -= 5;
                 show("wrong");
                 setTimeout(function(){
                     hide("wrong");
@@ -108,7 +109,8 @@ document.getElementById("scorevalue").innerHTML = score;
 //functions
 function startCountdown(){
     action = setInterval(function(){
-        timeremaining -= 1; document.getElementById("timeremainingvalue").innerHTML = timeremaining;
+        timeremaining -= 1; 
+        document.getElementById("timeremainingvalue").innerHTML = timeremaining;
         if(timeremaining == 0){//game over
            stopCountdown();
            show("gameover");
@@ -153,24 +155,19 @@ function getCookie(cname) {
 //generate question and multiple answers
 
 function generateQA(){
-    var x = 1 + Math.round(9*Math.random());
-    var y = 1 + Math.round(9*Math.random());
-    correctAnswer = x*y;
-    document.getElementById("question").innerHTML = x + "x" + y;
+    var question = "Factor: x^2-625";
+    var answers = ["(X-25)(X+25)", "(X-5)(X+5)", "(X-25)(X-25)", "(X-5)(X-5)", "(X-625)(X+5)"];
+    correctAnswer = [answers[0]];
+    document.getElementById("question").innerHTML = question;
     var correctPosition = 1 + Math.round(3*Math.random());
-    document.getElementById("box" + correctPosition).innerHTML = correctAnswer; //fill one box with the correct answer
+    document.getElementById("box" + correctPosition).innerHTML = answers[0]; //fill one box with the correct answer
     
     //fill other boxes with wrong answers
     
-    var answers = [correctAnswer];
     
     for(i = 1; i < 5; i++){
-        if (i != correctPosition){
-            var wrongAnswer;
-do{
-wrongAnswer = (1 + Math.round(9*Math.random()))*(1 + Math.round(9*Math.random())); //a wrong answer
-}while(answers.indexOf(wrongAnswer) > -1)
-           
+        if (i != correctPosition){            
+var wrongAnswer = answers[i];
 document.getElementById("box" + i).innerHTML = wrongAnswer;
             answers.push(wrongAnswer);
         }
