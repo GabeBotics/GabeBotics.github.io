@@ -89,6 +89,7 @@ document.getElementById("scorevalue").innerHTML = score;
                 generateQA();
                 
             }else{
+                timeremaining -= 5;
                 //wrong answer
                 show("wrong");
                 setTimeout(function(){
