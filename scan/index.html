@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
 <title>Scansion</title>
 <style>
     #button{
@@ -24,34 +23,34 @@
     } 
     #output{
         position: relative;
-        left: 250px;
+        left: 100px;
+	width: 600px;
     }
     #container{
         display: flex; 
         justify-content: center;
     }
-    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.h1,button {font-family: "Montserrat", sans-serif}
+    body,h1,{
+	font-family: "Lato", sans-serif
+    }
+.h1,button {
+	font-family: "Montserrat", sans-serif
+    }
 </style>    
 </head>
 
 <body>
-    <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+    <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">Scansion Calculator</h1>
   <button onClick="Scan()" id='button' class="w3-button w3-black w3-padding-large w3-large">Scan</button>
   <div id = "container">        
    <textarea id="input" rows="10" cols="75"></textarea>
       </div>
 </header>
+	<h1>Scansion:</h1>
 <div class="w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-twothird">
-      </div>    
-    </div> 
-    </div>
-<p id="output">
-		
-	</p>    
+	<p id="output"></p>
+    </div>    
 	<script src="main.js"> </script>
 </body>
 </html>
