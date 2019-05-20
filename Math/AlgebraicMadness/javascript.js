@@ -72,7 +72,7 @@ document.getElementById("startreset").onclick = function(){
         hide("gameover");
        //show countdown box 
         show("timeremaining");
-        timeremaining = 5000;
+        timeremaining = 360;
         document.getElementById("timeremainingvalue").innerHTML = timeremaining;
         
         //change button to reset
