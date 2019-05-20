@@ -18,7 +18,7 @@ function Scan() {
 	var input = document.getElementById("input").value;
 
 	output = input.toLowerCase();
-	output = output.replace(/[.,?;:'!]/g, '');
+	output = output.replace(/[.,?;:'!*/-]/g, '');
 
 	//remove every 'h'
 	output = output.replace(/h/g, '');
