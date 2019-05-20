@@ -45,7 +45,7 @@ document.getElementById("scorevalue").innerHTML = score;
                 
             }else{
                 //wrong answer
-                timeremaining -= 5;
+                timeremaining -= 10;
                 show("wrong");
                 setTimeout(function(){
                     hide("wrong");
@@ -72,7 +72,7 @@ document.getElementById("startreset").onclick = function(){
         hide("gameover");
        //show countdown box 
         show("timeremaining");
-        timeremaining = 360;
+        timeremaining = 240;
         document.getElementById("timeremainingvalue").innerHTML = timeremaining;
         
         //change button to reset
