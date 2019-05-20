@@ -60,7 +60,7 @@ function Scan(){
 	output = output.replace(‘/% /‘, ‘/ /‘);
 	output = output.replace(‘*% /‘, ‘* /‘);
 	output = output.replace(‘/% *‘, ‘/ *‘);
-	output = output.replace(‘*% *), ‘* *‘);
+	output = output.replace(‘*% *', ‘* *‘);
 	output = output.replace(‘%’, ‘-‘);
 	
 	
