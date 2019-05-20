@@ -91,10 +91,20 @@ function WriteOutput(String){
 			if (String.charAt(i) === '*'){
 				finalOutput += '- ';
 				}
-			//if there are less than two characters after it
-			else if (String.length - i <= 2 && String.charAt(String.length-1) != '/' && String.charAt(String.length-1) != "*"){
+			//if there is one character after it
+			if (String.length - i = 2){
+				//if there is a vowel after then make it short
+				if (String.charAt(String.length-1) = '/' || String.charAt(String.length-1) = '*'){
+					finalOutput += 'U ';
+				}
+			}else{
 				finalOutput += 'X ';
-			}else finalOutput += 'U ';
+			}
+			
+			//if there is no character after it
+			if (String.length - i = 1){
+				finalOutput += 'X ';
+			}
 			
 			//long syllable case
 			else if (String.charAt(i) === '/' && String.charAt(i+1) === '-' && String.charAt(i+2) === '-'){
