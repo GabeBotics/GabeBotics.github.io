@@ -1,6 +1,6 @@
 var vowels = ['a', 'e', 'o', 'u'];
 var longVowels = ['ā', 'ē', 'ī','ō', 'ū'];
-var consonants = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'p', 'qu', 'q', 'r', 's', 't', 'v', 'w', 'y', 'z'];
+var consonants = ['b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'n', 'p', 'qu', 'q', 'r', 's', 't', 'v', 'w', 'y', 'z'];
 var diphthongs = ['ae', 'āe', 'aē', 'āē', 'au', 'āu', 'aū', 'āū', 'eu', 'ēu','eū', 'ēū', 'oe', 'ōe', 'oē', 'ōē'];
 
 var output;
@@ -22,6 +22,9 @@ function Scan(){
 	
 	//remove every 'h'
 	output = output.replace(/h/g, '');
+	
+	//represent 'm' as '%'
+	output = output.replace(/m/g, ‘%’);
 	
 	//represent each consonant as '-'
 	for (var i = 0; i < consonants.length; i++){
@@ -53,6 +56,14 @@ function Scan(){
 		output = output.replace(new RegExp(longVowels[i], 'g'), '*');
 	}
     
+	//fix elisions with 'm'
+	output = output.replace(‘/% /‘, ‘/ /‘);
+	output = output.replace(‘*% /‘, ‘* /‘);
+	output = output.replace(‘/% *‘, ‘/ *‘);
+	output = output.replace(‘*% *), ‘* *‘);
+	output = output.replace(‘%’, ‘-‘);
+	
+	
     //fix elisions
     output = output.replace('/ *', ' *');
     output = output.replace('* /', ' /');
@@ -81,9 +92,10 @@ function WriteOutput(String){
 				finalOutput += '- ';
 				}
 			//if there are less than two characters after it
-			else if (String.length - i <= 2){
+			else if (String.length - i <= 2 && String.charAt(String.length-1) != '/' && String.charAt(String.length-1) != "*"){
 				finalOutput += 'X ';
-			}
+			}else finalOutput += 'U ';
+			
 			//long syllable case
 			else if (String.charAt(i) === '/' && String.charAt(i+1) === '-' && String.charAt(i+2) === '-'){
 				finalOutput += '- ';
