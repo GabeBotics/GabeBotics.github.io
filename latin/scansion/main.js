@@ -57,18 +57,18 @@ function Scan() {
 	}
 
 	//fix elisions with 'm'
-	output = output.replace(new RegExp('/% /', 'g'), '/ /');
-	output = output.replace(new RegExp('/% \\*', 'g'), '/ *');
-	output = output.replace(new RegExp('\\*% /', 'g'), '* /');
-	output = output.replace(new RegExp('\\*% \\*', 'g'), '* *');
+	output = output.replaceAll('/% /', '/ /');
+	output = output.replaceAll('/% *', '/ *');
+	output = output.replaceAll('*% /', '* /');
+	output = output.replaceAll('*% *', '* *');
 	output = output.replace(/%/g, '-');
 
 
 	//fix elisions
-	output = output.replace(new RegExp('/ \\*', 'g'), ' *');
-	output = output.replace(new RegExp('\\* /', 'g'), ' /');
-	output = output.replace(new RegExp('/ /', 'g'), ' /');
-	output = output.replace(new RegExp('\\* \\*', 'g'), ' *');
+	output = output.replaceAll('/ *', ' *');
+	output = output.replaceAll('* /', ' /');
+	output = output.replaceAll('/ /', ' /');
+	output = output.replaceAll('* *', ' *');
 
 	//remove spaces
 	output = output.replace(/ /g, '');
