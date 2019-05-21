@@ -127,3 +127,12 @@ function WriteOutput(String) {
 		}
 	}
 }
+
+String.prototype.replaceAll = function(searchStr, replaceStr) {
+    var str = this;
+    
+    // escape regexp special characters in search string
+    searchStr = searchStr.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    
+    return str.replace(new RegExp(searchStr, 'gi'), replaceStr);
+};
