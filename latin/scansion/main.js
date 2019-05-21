@@ -24,7 +24,7 @@ function Scan() {
 	output = output.replace(/h/g, '');
 
 	//replace 'm' with '%'
-	output = output.replace('m', '%');
+	output = output.replace(/m/g, '%');
 
 	//represent each consonant as '-'
 	for (var i = 0; i < consonants.length; i++) {
